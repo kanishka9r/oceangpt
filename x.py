@@ -106,3 +106,9 @@ conn = sqlite3.connect(output_sqlite)
 df_check = pd.read_sql("SELECT * FROM argo_profiles LIMIT 5", conn)
 print(df_check)
 conn.close()
+
+
+# Save the full dataframe as CSV
+csv_path = "data/global_argo.csv"
+global_df.to_csv(csv_path, index=False)
+print(f"Saved {len(global_df)} rows to {csv_path}")
