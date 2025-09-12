@@ -2,7 +2,7 @@ import os
 import xarray as xr
 import pandas as pd
 
-input_folder = r"C:\Users\kanis\Downloads\KANISHKA\PROJECT\sih floatchat\data\clean"
+input_folder = r"C:\Users\kanis\Downloads\KANISHKA\PROJECT\sih floatchat\data\.nc files"
 output_folder = r"C:\Users\kanis\Downloads\KANISHKA\PROJECT\sih floatchat\data\csv_output"
 
 os.makedirs(output_folder, exist_ok=True)
