@@ -1,0 +1,381 @@
+/* ==================== DESIGN SYSTEM VARIABLES ==================== */
+:root {
+    --background: 220 25% 97%;
+    --foreground: 210 25% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 25% 15%;
+    --primary: 210 85% 25%; 
+    --secondary: 195 75% 88%; 
+    --accent: 180 85% 35%; 
+    --muted-foreground: 210 15% 45%;
+    --border: 195 20% 85%;
+    --radius: 0.75rem;
+    --gradient-ocean: linear-gradient(135deg, hsl(210 85% 25%), hsl(195 85% 45%), hsl(180 85% 35%));
+    --gradient-surface: linear-gradient(180deg, hsl(195 75% 88%), hsl(195 60% 95%));
+    --shadow-data: 0 4px 20px hsl(195 85% 45% / 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-surface);
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+}
+
+/* ==================== GRADIENT TEXT UTILITY ==================== */
+.gradient-text {
+    background: var(--gradient-ocean);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+
+/* ==================== FIXED NAVBAR ==================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: hsla(0, 0%, 100%, 0.8); 
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+    padding: 1rem 5%;
+    border-bottom: 1px solid hsl(var(--border));
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.navbar-logo .logo-path {
+    fill: hsl(var(--primary));
+}
+
+.nav-links a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: hsl(var(--muted-foreground));
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: hsl(var(--primary));
+}
+
+.nav-buttons .btn-signin {
+    background: none;
+    border: none;
+    color: hsl(var(--foreground));
+    font-weight: 600;
+    margin-right: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: hsl(var(--accent));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+}
+
+/* ==================== MAIN DASHBOARD CONTENT ==================== */
+.dashboard {
+    padding: 110px 5% 4rem 5%;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2.75rem;
+    line-height: 1.2;
+}
+
+.dashboard-header p {
+    color: hsl(var(--muted-foreground));
+}
+
+.header-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-secondary {
+    background-color: hsl(var(--card));
+    color: hsl(var(--primary));
+    padding: 0.75rem 1.5rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+}
+.btn-secondary:hover {
+    background-color: hsl(var(--background));
+}
+
+
+/* ==================== FILTERS & CARDS ==================== */
+.card {
+    background-color: hsl(var(--card));
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-data);
+    border: 1px solid hsl(var(--border));
+}
+
+.filters-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+}
+
+.filter-item label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+}
+
+.filter-item select, .filter-item input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) - 2px);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background-color: hsl(220 25% 98%);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.viz-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.viz-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.icon-wrapper {
+    background-color: hsl(var(--secondary));
+    border-radius: calc(var(--radius) - 2px);
+    padding: 0.75rem;
+    display: grid;
+    place-items: center;
+}
+
+.viz-icon {
+    font-size: 1.5rem;
+    color: hsl(var(--primary));
+}
+
+.viz-header h3 {
+    color: hsl(var(--primary));
+    margin-bottom: 0.1rem;
+}
+
+.viz-header p {
+    font-size: 0.9rem;
+    color: hsl(var(--muted-foreground));
+}
+
+.viz-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    background-color: hsl(var(--background));
+    border: 1px dashed hsl(var(--border));
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    color: hsl(var(--border));
+    margin-bottom: 1rem;
+}
+
+.viz-placeholder p {
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+}
+
+.viz-placeholder span {
+    font-size: 0.9rem;
+    color: hsl(var(--muted-foreground), 0.7);
+}
+
+
+/* ==================== STATS BAR ==================== */
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 2.25rem;
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    font-weight: 600;
+}
+
+.stat-card span {
+    font-size: 0.9rem;
+    color: hsl(var(--muted-foreground));
+}
+
+/* ==================== RESPONSIVENESS ==================== */
+@media (max-width: 1200px) {
+    .nav-links { display: none; } 
+    .filters-container { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 992px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; gap: 1rem;}
+}
+
+@media (max-width: 768px) {
+    .filters-container { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+    .stats-bar { grid-template-columns: 1fr; }
+    .nav-buttons .btn-signin { display: none; }
+    .dashboard-header h1 { font-size: 2rem; }
+}
+
+/* ==================== MODAL STYLES ==================== */
+/* The Modal (background) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: var(--radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    color: var(--primary);
+}
+
+/* The Close Button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Body */
+.modal-body {
+    padding-top: 15px;
+}
+.modal-body .filter-item {
+    margin-bottom: 15px;
+}
+
+/* ==================== DISABLED CHART MESSAGE ==================== */
+.disabled-message {
+    display: none; 
+    text-align: center;
+    color: var(--muted-foreground);
+    padding: 2rem;
+    font-style: italic;
+}
