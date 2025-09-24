@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloatChat - Data Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>CogniFloat - Data Dashboard</title>
+    <link rel="stylesheet" href="style.css"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,19 +12,18 @@
     <link rel="stylesheet" href="dashboard_style.css">
 </head>
 <body>
-
     <header class="navbar">
         <div class="navbar-container">
-            <a href="#" class="navbar-logo">
+            <a href="index.html" class="navbar-logo">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.24 16.24C15.07 17.41 13.57 18 12 18C10.43 18 8.93 17.41 7.76 16.24C6.59 15.07 6 13.57 6 12C6 11.17 6.21 10.36 6.58 9.62L14.38 17.42C13.64 17.79 12.83 18 12 18C10.14 18 8.5 16.74 7.82 15H16.18C15.5 16.74 13.86 18 12 18C11.17 18 10.36 17.79 9.62 17.42L17.42 9.62C17.79 10.36 18 11.17 18 12C18 13.86 16.74 15.5 15 15.18V7.82C16.74 8.5 18 10.14 18 12C18 13.57 17.41 15.07 16.24 16.24Z" class="logo-path"/>
                 </svg>
-                <span class="gradient-text">FloatChat</span>
+                <span class="gradient-text">CogniFloat</span>
             </a>
             <nav class="nav-links">
                 <a href="#">Features</a>
                 <a href="#">Chat</a>
-                <a href="#" class="active">Dashboard</a>
+                <a href="dashboard.html" class="active">Dashboard</a>
                 <a href="#">About</a>
             </nav>
             <div class="nav-buttons">
@@ -41,6 +40,7 @@
                 <p>Interactive visualizations of ARGO oceanographic data</p>
             </div>
             <div class="header-buttons">
+                <span id="lastUpdated" class="last-updated-text"></span>
                 <button class="btn-secondary"><i class='bx bx-export'></i> Export Data</button>
                 <button id="advancedFiltersBtn" class="btn-primary"><i class='bx bx-slider-alt'></i> Advanced Filters</button>
             </div>
@@ -63,11 +63,11 @@
             </div>
             <div class="filter-item">
                 <label for="date-from">Date From</label>
-                <input type="text" id="date-from" value="January 1st, 2025" disabled>
+                <input type="text" id="date-from" value="" disabled>
             </div>
             <div class="filter-item">
                 <label for="date-to">Date To</label>
-                <input type="text" id="date-to" value="December 31st, 2025" disabled>
+                <input type="text" id="date-to" value="" disabled>
             </div>
         </section>
         
@@ -115,36 +115,31 @@
             </div>
         </div>
 
-       <section class="stats-bar">
-        <div class="stat-card card">
-            <h2 id="activeFloatsStat">847</h2>
-            <p>Active Floats</p>
-            <span id="floatsRegionStat">in Indian Ocean</span>
-        </div>
-        <div class="stat-card card">
-            <h2 id="dataPointsStat">2.3M</h2>
-            <p>Data Points</p>
-            <span>in selected range</span>
-        </div>
-        <div class="stat-card card">
-            <h2 id="avgTempStat">4.2°C</h2>
-            <p>Avg Temperature</p>
-            <span id="tempDepthStat">at 1000m depth</span>
-        </div>
-        <div class="stat-card card">
-            <h2 id="avgSalinityStat">35.1</h2>
-            <p>Avg Salinity</p>
-            <span>PSU</span>
-        </div>
-       </section>
+        <section class="stats-bar">
+            <div class="stat-card card">
+                <h2 id="activeFloatsStat">0</h2>
+                <p>Active Floats</p>
+                <span>in Indian Ocean</span>
+            </div>
+            <div class="stat-card card">
+                <h2 id="dataPointsStat">0</h2>
+                <p>Data Points</p>
+                <span>in selected range</span>
+            </div>
+            <div class="stat-card card">
+                <h2 id="avgTempStat">0°C</h2>
+                <p>Avg Temperature</p>
+                <span>at 1000m depth</span>
+            </div>
+            <div class="stat-card card">
+                <h2 id="avgSalinityStat">0</h2>
+                <p>Avg Salinity</p>
+                <span>PSU</span>
+            </div>
+        </section>
 
     </main>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="dashboard_app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="app.js"></script>
-
     <div id="advancedFiltersModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -152,26 +147,16 @@
                 <span class="close-button">&times;</span>
             </div>
            <div class="modal-body">
-    <div class="filter-item">
-        <label for="floatId">Filter by specific Float ID</label>
-        <input type="text" id="floatId" placeholder="Enter Float ID (e.g., 5904321)">
-    </div>
-    <div class="filter-item">
-        <label for="depthRange">Filter by Pressure Range</label>
-        <input type="text" id="depthRange" placeholder="e.g., 500 - 1500">
-    </div>
-    <div class="filter-item">
-        <label for="qualityFlag">Data Quality</label>
-        <select id="qualityFlag">
-            <option>High Quality Only</option>
-            <option>All Data</option>
-        </select>
-    </div>
-    <button class="btn-primary" style="width: 100%; margin-top: 10px;">Apply Filters</button>
-</div>
+            <div class="filter-item">
+                <label for="floatIdFilter">Filter by specific Float ID</label>
+                <input type="text" id="floatIdFilter" placeholder="e.g., 7902246">
+            </div>
+            <button id="applyFiltersBtn" class="btn-primary" style="width: 100%; margin-top: 10px;">Apply Filter</button>
+            <button id="clearFiltersBtn" class="btn-secondary" style="width: 100%; margin-top: 10px; background-color: #eee;">Clear Filter</button>
         </div>
     </div>
-    </body>
-</html>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard_app.js"></script>
 </body>
 </html>
