@@ -23,9 +23,9 @@ for file in os.listdir(input_folder):
             # Save cleaned CSV
             df_cleaned.to_csv(output_path, index=False)
 
-            print(f"✅ Cleaned {file} -> {output_path}")
+            print(f"Cleaned {file} - {output_path}")
         except Exception as e:
-            print(f"❌ Failed to process {file}: {e}")
+            print(f"Failed to process {file}: {e}")
 
 
 all_files = [os.path.join(output_folder, f) for f in os.listdir(output_folder) if f.endswith('.csv')]
